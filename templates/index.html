@@ -1,552 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>MiCLOUDER</title>
-   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <link rel="icon" href="favicon.png" type="image/x-icon">
-    <link href='https://fonts.googleapis.com/css?family=Roboto%7COswald:300,400,700' rel='stylesheet'>
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/owl.carousel.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <link href="css/responsive-style.css" rel="stylesheet">
-    <link href="css/colors/theme-color-1.css" rel="stylesheet" id="changeColorScheme">
-    <link rel="stylesheet" href="../static/style.css">
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MiCLOUDER - Web Hosting & Domain Registration</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f9fafc;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 15px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      background-color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header .logo {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #007bff;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li {
+      font-weight: 600;
+    }
+
+    nav ul li a {
+      font-size: 1rem;
+      padding: 6px 8px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #0056b3;
+    }
+
+    /* Hero Section */
+    .hero {
+      width: 100%;
+      max-width: 1200px;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      color: white;
+      border-radius: 10px;
+      margin: 30px 0;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    }
+
+    /* Domain Search */
+    .domain-search {
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .domain-search input[type="text"] {
+      flex: 1;
+      padding: 15px 20px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+    }
+
+    .domain-search button {
+      padding: 15px 25px;
+      background-color: #007bff;
+      color: white;
+      font-weight: 700;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .domain-search button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Trust Signals */
+    .trust-signals {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+
+    .trust-signals div {
+      text-align: center;
+      max-width: 150px;
+    }
+
+    .trust-signals img {
+      max-width: 80px;
+      margin-bottom: 12px;
+      filter: grayscale(100%) brightness(80%);
+      transition: filter 0.3s ease;
+    }
+
+    .trust-signals img:hover {
+      filter: none;
+    }
+
+    .trust-signals p {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Hosting Plans */
+    .plans {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 80px;
+      text-align: center;
+    }
+
+    .plans h2 {
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      color: #007bff;
+      font-weight: 700;
+    }
+
+    .plan-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .plan-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      width: 280px;
+      padding: 30px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-10px);
+      border-color: #007bff;
+    }
+
+    .plan-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: #222;
+    }
+
+    .plan-price {
+      font-size: 2rem;
+      color: #007bff;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 25px;
+      text-align: left;
+      width: 100%;
+    }
+
+    .plan-features li {
+      margin-bottom: 12px;
+      font-size: 1rem;
+      color: #555;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .plan-features li::before {
+      content: "✔";
+      color: #007bff;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .plan-cta {
+      padding: 12px 30px;
+      background-color: #007bff;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .plan-cta:hover {
+      background-color: #0056b3;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      max-width: 1200px;
+      padding: 25px 20px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .plan-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .domain-search {
+        flex-direction: column;
+      }
+
+      .domain-search input[type="text"],
+      .domain-search button {
+        width: 100%;
+        border-radius: 5px;
+      }
+
+      .domain-search button {
+        margin-top: 10px;
+        border-radius: 5px;
+      }
+    }
+
+  </style>
 </head>
-
 <body>
-    <div id="preloader">
-        <div class="preloader--spinners">
-            <div class="preloader--spinner preloader--spinner-1"></div>
-            <div class="preloader--spinner preloader--spinner-2"></div>
-        </div>
-    </div>
-    <div class="wrapper">
-        <header id="header">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a href="login.html" class="header--custom-btn btn--default hover">LOGIN</a>
-                        <a href="index.html" class="navbar-brand">
-                            <h1><span><i class="fa fm fa-server"></i>COLOR</span>HOST</h1> </a>
-                    </div><a href="login.html" class="header--custom-btn btn--default hover">LOGIN</a>
-                    <div id="headerNav" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="index.html">HOME</a></li>
-                            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">HOSTING<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="shared-hosting.html">SHARED HOSTING</a></li>
-                                    <li><a href="reseller-hosting.html">RESELLER HOSTING</a></li>
-                                    <li><a href="vps-hosting.html">VPS HOSTING</a></li>
-                                    <li><a href="dedicated-hosting.html">DEDICATED HOSTING</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="domain.html">DOMAIN</a></li>
-                            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">PAGES<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">ABOUT</a></li>
-                                    <li><a href="testimonial.html">TESTIMONIAL</a></li>
-                                    <li><a href="login.html">LOGIN</a></li>
-                                   
-                                </ul>
-                            </li>
-                            <li><a href="blog.html">BLOG</a></li>
-                            <li><a href="contact.html">CONTACT</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <div id="banner" class="bg--overlay" data-bg-img="img/banner-img/bg.png">
-            <div class="banner--slider BannerSlider" data-owl-autoplay="true">
-                <div class="banner--item" data-owl-id="sharedSlider">
-                    <div class="vc-parent">
-                        <div class="vc-child">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-2">
-                                        <div class="banner--content">
-                                            <h2>SHARED HOSTING</h2>
-                                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3> <a href="#" class="btn--default hover">VIEW DETAILS</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="banner--item" data-owl-id="vpsSlider">
-                    <div class="vc-parent">
-                        <div class="vc-child">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-2">
-                                        <div class="banner--content">
-                                            <h2>VPS HOSTING</h2>
-                                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3> <a href="#" class="btn--default hover">VIEW DETAILS</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="banner--item" data-owl-id="dedicatedSlider">
-                    <div class="vc-parent">
-                        <div class="vc-child">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-2">
-                                        <div class="banner--content">
-                                            <h2>DEDICATED HOSTING</h2>
-                                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3> <a href="#" class="btn--default hover">VIEW DETAILS</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="banner--slider-nav">
-                <div class="container">
-                    <ul class="nav">
-                        <li data-owl-target="sharedSlider"><i class="fa fa-server"></i></li>
-                        <li data-owl-target="vpsSlider"><i class="fa fa-cloud"></i></li>
-                        <li data-owl-target="dedicatedSlider"><i class="fa fa-hdd-o"></i></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div id="pricing" class="bg--lightgrey bd--bottom">
-            <div class="pricing--slider PricingSlider" data-owl-autoplay="false">
-                <div class="pricing--slider-item" data-owl-id="sharedSlider">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <div class="row reset-gutter">
-                                    <div class="col-md-4 pricing--item">
-                                        <div class="pricing--header">
-                                            <h2>Plan 1</h2> </div>
-                                        <div class="pricing--body">
-                                            <h3>Starting At<strong>$9.99</strong></h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
-                                        </div>
-                                        <div class="pricing--footer"> <a href="#" class="btn--default hover">ORDER NOW</a> </div>
-                                    </div>
-                                    <div class="col-md-4 pricing--item popular"> <span class="pricing--popular-tag">POPULAR</span>
-                                        <div class="pricing--header">
-                                            <h2>Plan 2</h2> </div>
-                                        <div class="pricing--body">
-                                            <h3>Starting At<strong>$9.99</strong></h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
-                                        </div>
-                                        <div class="pricing--footer"> <a href="#" class="btn--default hover">ORDER NOW</a> </div>
-                                    </div>
-                                    <div class="col-md-4 pricing--item">
-                                        <div class="pricing--header">
-                                            <h2>Plan 3</h2> </div>
-                                        <div class="pricing--body">
-                                            <h3>Starting At<strong>$9.99</strong></h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
-                                        </div>
-                                        <div class="pricing--footer"> <a href="#" class="btn--default hover">ORDER NOW</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pricing--slider-item" data-owl-id="vpsSlider">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <div class="row reset-gutter">
-                                    <div class="col-md-4 pricing--item">
-                                        <div class="pricing--header">
-                                            <h2>Plan 1</h2> </div>
-                                        <div class="pricing--body">
-                                            <h3>Starting At<strong>$9.99</strong></h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
-                                        </div>
-                                        <div class="pricing--footer"> <a href="#" class="btn--default hover">ORDER NOW</a> </div>
-                                    </div>
-                                    <div class="col-md-4 pricing--item popular"> <span class="pricing--popular-tag">POPULAR</span>
-                                        <div class="pricing--header">
-                                            <h2>Plan 2</h2> </div>
-                                        <div class="pricing--body">
-                                            <h3>Starting At<strong>$9.99</strong></h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
-                                        </div>
-                                        <div class="pricing--footer"> <a href="#" class="btn--default hover">ORDER NOW</a> </div>
-                                    </div>
-                                    <div class="col-md-4 pricing--item">
-                                        <div class="pricing--header">
-                                            <h2>Plan 3</h2> </div>
-                                        <div class="pricing--body">
-                                            <h3>Starting At<strong>$9.99</strong></h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
-                                        </div>
-                                        <div class="pricing--footer"> <a href="#" class="btn--default hover">ORDER NOW</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pricing--slider-item" data-owl-id="dedicatedSlider">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <div class="row reset-gutter">
-                                    <div class="col-md-4 pricing--item">
-                                        <div class="pricing--header">
-                                            <h2>Plan 1</h2> </div>
-                                        <div class="pricing--body">
-                                            <h3>Starting At<strong>$9.99</strong></h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
-                                        </div>
-                                        <div class="pricing--footer"> <a href="#" class="btn--default hover">ORDER NOW</a> </div>
-                                    </div>
-                                    <div class="col-md-4 pricing--item popular"> <span class="pricing--popular-tag">POPULAR</span>
-                                        <div class="pricing--header">
-                                            <h2>Plan 2</h2> </div>
-                                        <div class="pricing--body">
-                                            <h3>Starting At<strong>$9.99</strong></h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
-                                        </div>
-                                        <div class="pricing--footer"> <a href="#" class="btn--default hover">ORDER NOW</a> </div>
-                                    </div>
-                                    <div class="col-md-4 pricing--item">
-                                        <div class="pricing--header">
-                                            <h2>Plan 3</h2> </div>
-                                        <div class="pricing--body">
-                                            <h3>Starting At<strong>$9.99</strong></h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
-                                        </div>
-                                        <div class="pricing--footer"> <a href="#" class="btn--default hover">ORDER NOW</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="domainSearch" class="bg--overlay" data-bg-img="img/domain-search-img/bg.png">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="section--title">
-                            <h2>LOOKING FOR A DOMAIN NAME?</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem atque, praesentium doloremque quae debitis odit quos quas atque commodi ipsa. Neque laborum animi illo amet provident, asperiores.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="ds--form">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <form action="#" method="get">
-                                <div class="ds--form-input">
-                                    <input type="text" name="domain" class="text--input" placeholder="e.g. example" autocomplete="off" required>
-                                    <button type="submit" class="btn--default btn--primary">SEARCH</button>
-                                </div>
-                                <div class="ds--form-ext clearfix">
-                                    <label for="dotCom">
-                                        <input type="radio" name="ext" value=".com" id="dotCom" checked> <span>.com</span> </label>
-                                    <label for="dotNet">
-                                        <input type="radio" name="ext" value=".net" id="dotNet"> <span>.net</span> </label>
-                                    <label for="dotOrg">
-                                        <input type="radio" name="ext" value=".org" id="dotOrg"> <span>.org</span> </label>
-                                    <label for="dotInfo">
-                                        <input type="radio" name="ext" value=".info" id="dotInfo"> <span>.info</span> </label>
-                                    <label for="dotUs">
-                                        <input type="radio" name="ext" value=".us" id="dotUs"> <span>.us</span> </label>
-                                    <label for="dotBiz">
-                                        <input type="radio" name="ext" value=".biz" id="dotBiz"> <span>.biz</span> </label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="extPrice" class="bg--vermilion">
-            <div class="container">
-                <div class="row reset-gutter">
-                    <div class="col-md-2 ext-price--item"> <span>.com</span> <strong>$1.17</strong> </div>
-                    <div class="col-md-2 ext-price--item"> <span>.net</span> <strong>$1.09</strong> </div>
-                    <div class="col-md-2 ext-price--item"> <span>.org</span> <strong>$0.90</strong> </div>
-                    <div class="col-md-2 ext-price--item"> <span>.info</span> <strong>$0.30</strong> </div>
-                    <div class="col-md-2 ext-price--item"> <span>.us</span> <strong>$1.00</strong> </div>
-                    <div class="col-md-2 ext-price--item"> <span>.eu</span> <strong>$0.99</strong> </div>
-                </div>
-            </div>
-        </div>
-        <div id="services">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="section--title">
-                            <h2>OUR SERVICES</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem atque, praesentium doloremque quae debitis odit quos quas atque commodi ipsa. Neque laborum animi illo amet provident, asperiores.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 service--item" data-revealFromBottom>
-                        <div class="service--icon"> <i class="fa fa-globe"></i> </div>
-                        <div class="service--content">
-                            <h3>DOMAIN REGISTRATION</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit eius.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 service--item" data-revealFromBottom>
-                        <div class="service--icon"> <i class="fa fa-windows"></i> </div>
-                        <div class="service--content">
-                            <h3>WINDOWS SERVER</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit eius.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 service--item" data-revealFromBottom>
-                        <div class="service--icon"> <i class="fa fa-linux"></i> </div>
-                        <div class="service--content">
-                            <h3>LINUX SERVER</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit eius.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="features" class="bg--lightgrey bd--top-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="section--title">
-                            <h2>SERVICES INCLUDED</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem atque, praesentium doloremque quae debitis odit quos quas atque commodi ipsa. Neque laborum animi illo amet provident, asperiores.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row col--center">
-                    <div class="col-md-6">
-                        <div class="features--img"> <img src="img/features-img/featured.png" alt=""> </div>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="features--items">
-                            <li class="features--item dot dot--1" data-revealFromRight>
-                                <h3>24/7/365 SUPPORT</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui delectus ipsum iusto sit, hic voluptas, dicta deleniti.</p>
-                            </li>
-                            <li class="features--item dot dot--2" data-revealFromRight>
-                                <h3>45 DAY GUARANTEE</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui delectus ipsum iusto sit, hic voluptas, dicta deleniti.</p>
-                            </li>
-                            <li class="features--item dot dot--3" data-revealFromRight>
-                                <h3>99.9% UPTIME</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui delectus ipsum iusto sit, hic voluptas, dicta deleniti.</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="counter" class="bg--overlay" data-bg-img="img/counter-img/bg.png">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 counter--item">
-                        <p class="counter--num" data-counterUp>220</p>
-                        <p class="counter--title">PROJECT COMPLETED</p>
-                    </div>
-                    <div class="col-md-3 col-sm-6 counter--item">
-                        <p class="counter--num" data-counterUp>420</p>
-                        <p class="counter--title">HAPPY CLIENT</p>
-                    </div>
-                    <div class="col-md-3 col-sm-6 counter--item">
-                        <p class="counter--num" data-counterUp>2520</p>
-                        <p class="counter--title">LINE OF CODE</p>
-                    </div>
-                    <div class="col-md-3 col-sm-6 counter--item">
-                        <p class="counter--num" data-counterUp>1520</p>
-                        <p class="counter--title">CUP OF TEA</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="testimonial">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="section--title">
-                            <h2>CLIENTS FEEDBACK</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem atque, praesentium doloremque quae debitis odit quos quas atque commodi ipsa. Neque laborum animi illo amet provident, asperiores.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial--slider TestimonialSlider" data-owl-autoplay="true">
-                <div class="testimonial--item" data-thumb="img/testimonial-img/client-01.jpg">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="testimonial--content">
-                                    <blockquote>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio totam explicabo vitae omnis tenetur minima.</p>
-                                    </blockquote>
-                                    <p class="testimonial--citation">Justin Farrugia, Company</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial--item" data-thumb="img/testimonial-img/client-02.jpg">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="testimonial--content">
-                                    <blockquote>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio totam explicabo vitae omnis tenetur minima.</p>
-                                    </blockquote>
-                                    <p class="testimonial--citation">Mohammad Al Omayer, Company</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial--item" data-thumb="img/testimonial-img/client-03.jpg">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="testimonial--content">
-                                    <blockquote>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio totam explicabo vitae omnis tenetur minima.</p>
-                                    </blockquote>
-                                    <p class="testimonial--citation">Barbara Fernandes, Company</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="blog" class="bg--lightergrey bd--top-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="section--title">
-                            <h2>LATEST BLOG</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem atque, praesentium doloremque quae debitis odit quos quas atque commodi ipsa. Neque laborum animi illo amet provident, asperiores.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 post--item">
-                        <div class="post--img"> <img src="img/blog-img/post-01.png" alt="" class="img-responsive center-block"> </div>
-                        <div class="post--content-border">
-                            <div class="post--title">
-                                <h2><a href="#">LOREM IPSUM DOLOR SIT</a></h2> </div>
-                            <div class="post--meta">
-                                <p> <a href="#">ADMIN</a> <a href="#">CATEGORY</a> <a href="#">SEP 27, 2016</a> </p>
-                            </div>
-                            <div class="post--except">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nulla fugiat iste voluptatibus iure...</p>
-                            </div>
-                            <div class="post--except-footer"> <a href="#" class="more"><i class="fa fa-angle-double-right"></i>READ MORE</a> <a href="#" class="comments"><i class="fa fa-comments-o"></i> 2 COMMENTS</a> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 post--item">
-                        <div class="post--img"> <img src="img/blog-img/post-02.png" alt="" class="img-responsive center-block"> </div>
-                        <div class="post--content-border">
-                            <div class="post--title">
-                                <h2><a href="#">LOREM IPSUM DOLOR SIT</a></h2> </div>
-                            <div class="post--meta">
-                                <p> <a href="#">ADMIN</a> <a href="#">CATEGORY</a> <a href="#">SEP 27, 2016</a> </p>
-                            </div>
-                            <div class="post--except">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nulla fugiat iste voluptatibus iure...</p>
-                            </div>
-                            <div class="post--except-footer"> <a href="#" class="more"><i class="fa fa-angle-double-right"></i>READ MORE</a> <a href="#" class="comments"><i class="fa fa-comments-o"></i> 2 COMMENTS</a> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 post--item">
-                        <div class="post--video">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe src="https://www.youtube.com/embed/WDMWOiJb3CA?showinfo=0&amp;controls=0&amp;rel=0&amp;wmode=transparent" class="embed-responsive-item"></iframe>
-                            </div>
-                        </div>
-                        <div class="post--content-border">
-                            <div class="post--title">
-                                <h2><a href="#">LOREM IPSUM DOLOR SIT</a></h2> </div>
-                            <div class="post--meta">
-                                <p> <a href="#">ADMIN</a> <a href="#">CATEGORY</a> <a href="#">SEP 27, 2016</a> </p>
-                            </div>
-                            <div class="post--except">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nulla fugiat iste voluptatibus iure...</p>
-                            </div>
-                            <div class="post--except-footer"> <a href="#" class="more"><i class="fa fa-angle-double-right"></i>READ MORE</a> <a href="#" class="comments"><i class="fa fa-comments-o"></i> 2 COMMENTS</a> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer id="footer">
-            <div class="footer--widgets bg--dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 footer--widget fw--about">
-                            <h4>ABOUT US</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum quod mollitia quisquam. Architecto quam in atque sint voluptatem, consequatur consectetur ab ipsum maxime quod consequuntur excepturi illum dolorem ex modi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur animi id ex perspiciatis distinctio sequi minima...</p><a href="about.html" class="more">Read More <i class="fa fa-angle-double-right"></i></a>
-                            <div class="fw--about-social">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 footer--widget fw--links">
-                            <h4>SERVICES</h4>
-                            <ul>
-                                <li><a href="#"><i class="fa fm fa-angle-right"></i>Shared Hosting</a></li>
-                                <li><a href="#"><i class="fa fm fa-angle-right"></i>Reseller Hosting</a></li>
-                                <li><a href="#"><i class="fa fm fa-angle-right"></i>VPS Hosting</a></li>
-                                <li><a href="#"><i class="fa fm fa-angle-right"></i>Dedicated Hosting</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3 col-sm-6 footer--widget fw--links">
-                            <h4>USEFUL LINKS</h4>
-                            <ul>
-                                <li><a href="#"><i class="fa fm fa-angle-right"></i>Example Link</a></li>
-                                <li><a href="#"><i class="fa fm fa-angle-right"></i>Example Link</a></li>
-                                <li><a href="#"><i class="fa fm fa-angle-right"></i>Example Link</a></li>
-                                <li><a href="#"><i class="fa fm fa-angle-right"></i>Example Link</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer--copyright">
-                <div class="container">
-                    <p>Copyright &copy; 2018 <a href="#">Website Name</a>. All Rights Reserved.</p>
-                </div>
-            </div>
-        </footer>
-        <div id="backToTop"> <a href="#top"><i class="fa fa-angle-up"></i></a> </div>
-    </div>
-    <script src="js/jquery-3.1.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.hoverIntent.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/scrollreveal.min.js"></script>
-    <script src="js/retina.min.js"></script>
-    <script src="js/custom-color-switcher.js"></script>
-    <script src="js/main.js"></script>
-</body>
-<!-- Mirrored from themelooks.us/demo/colorhost/html/version-1/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Jul 2018 14:39:53 GMT -->
 
+  <header>
+    <div class="logo">MiCLOUDER</div>
+    <nav>
+      <ul>
+        <li><a href="#domains">Domains</a></li>
+        <li><a href="#plans">Hosting</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#blog">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" role="banner">
+    <h1>Reliable Web Hosting & Domain Registration</h1>
+    <p>Get your website online today with our fast, secure, and affordable hosting plans.</p>
+
+    <form class="domain-search" role="search" aria-label="Domain search form" onsubmit="event.preventDefault(); alert('Domain search functionality coming soon!');">
+      <input type="text" placeholder="Search your domain name..." aria-label="Domain name input" />
+      <button type="submit">Search Domain</button>
+    </form>
+  </section>
+
+  <section class="trust-signals" aria-label="Trust and reliability indicators">
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Google_Logo.svg" alt="Google logo" />
+      <p>Trusted by Google</p>
+    </div>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Amazon_logo.svg" alt="Amazon logo" />
+      <p>Trusted by Amazon</p>
+    </div>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Microsoft_Logo_%282012%29.svg" alt="Microsoft logo" />
+      <p>Trusted by Microsoft</p>
+    </div>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Trustpilot_logo.svg" alt="Trustpilot logo" />
+      <p>4.8/5 Rating on Trustpilot</p>
+    </div>
+  </section>
+
+  <section class="plans" id="plans" aria-label="Hosting plans">
+    <h2>Our Hosting Plans</h2>
+
+    <div class="plan-cards">
+      <article class="plan-card" tabindex="0" aria-labelledby="plan-basic">
+        <h3 id="plan-basic">Basic</h3>
+        <p class="plan-price">$3.99/mo</p>
+        <ul class="plan-features">
+          <li>10 GB SSD Storage</li>
+          <li>100 GB Bandwidth</li>
+          <li>1 Website</li>
+          <li>Free SSL Certificate</li>
+          <li>24/7 Support</li>
+        </ul>
+        <button class="plan-cta" aria-label="Select Basic hosting plan">Choose Basic</button>
+      </article>
+
+      <article class="plan-card" tabindex="0" aria-labelledby="plan-pro">
+        <h3 id="plan-pro">Pro</h3>
+        <p class="plan-price">$7.99/mo</p>
+        <ul class="plan-features">
+          <li>50 GB SSD Storage</li>
+          <li>Unlimited Bandwidth</li>
+          <li>5 Websites</li>
+          <li>Free SSL & Domain</li>
+          <li>Priority Support</li>
+        </ul>
+        <button class="plan-cta" aria-label="Select Pro hosting plan">Choose Pro</button>
+      </article>
+
+      <article class="plan-card" tabindex="0" aria-labelledby="plan-business">
+        <h3 id="plan-business">Business</h3>
+        <p class="plan-price">$15.99/mo</p>
+        <ul class="plan-features">
+          <li>200 GB SSD Storage</li>
+          <li>Unlimited Bandwidth</li>
+          <li>Unlimited Websites</li>
+          <li>Free SSL, Domain & Backup</li>
+          <li>Dedicated Support</li>
+        </ul>
+        <button class="plan-cta" aria-label="Select Business hosting plan">Choose Business</button>
+      </article>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>© 2025 HostPro Web Hosting & Domain Services. All rights reserved.</p>
+    <p>Contact: support@hostpro.com | +1 (800) 123-4567</p>
+  </footer>
+
+</body>
 </html>
